@@ -76,17 +76,12 @@ public class EmployeeSerializer {
 	}
 
 	
-	public void edit(){	
-		// Call view() to find, display, & return the book to edit
+	public void edit(){
 		Employee tmpEmployee = view();
 
-		// If the book != null, i.e. it was found then...
 	    if(tmpEmployee != null){
-		   // get it's index
 		   int index=employees.indexOf(tmpEmployee);
-		   // read in a new book and...
 		   tmpEmployee.read();
-		   // reset the object in books
 		   employees.set(index, tmpEmployee);
 	    }
 	}
@@ -94,11 +89,8 @@ public class EmployeeSerializer {
 	public void serializeEmployees(){
 		ObjectOutputStream os=null;
 		try {
-			// Serialize the ArrayList...
 			FileOutputStream fileStream = new FileOutputStream(employeesFile);
-		
 			os = new ObjectOutputStream(fileStream);
-				
 			os.writeObject(employees);
 		}
 		catch(FileNotFoundException fNFE){
@@ -120,7 +112,6 @@ public class EmployeeSerializer {
 	public void deserializeEmployees() {
 	    ObjectInputStream is = null;
 	    try {
-	        // Deserialize the ArrayList...
 	        FileInputStream fileStream = new FileInputStream(FILENAME);
 	        is = new ObjectInputStream(fileStream);
 	        employees = (ArrayList<Employee>) is.readObject();
